@@ -70,6 +70,14 @@ Each stage was verified independently before moving to the next, using both log 
 - AMCL: confirmed three ways — (1) static pose seed test with near-zero covariance, (2) live node check confirming map_server was actually running, (3) a teleop-driven convergence test: covariance spiked to 5–16 during erratic manual driving, then dropped steadily to 0.06–0.6 over ~10 readings after stopping, proving AMCL tracks real LiDAR data rather than just echoing a seeded pose.
 - Navigation: confirmed by sending a real goal within map bounds and observing both controller_server's own success report (Reached the goal!, Goal succeeded) and independently checking /amcl_pose — final position matched the goal within the configured 0.25m tolerance.
 
+## Demo Video
+
+[Watch the demo video here](https://drive.google.com/file/d/1MkvR9lv6bxnWsgc2ZRh_BzFInNQP_Zfs/view?usp=sharing)
+
+The video shows: the map loading and rendering in RViz, AMCL localizing the robot at a static pose, and two successful navigation goals — a long diagonal drive across most of the map followed by a return to near the starting position.
+
+Note: the AMCL teleop-driven convergence test (described in the Verification section above) was run and logged in an earlier session but is not included in this recording — the logged covariance data (spiking to 5–16 during erratic driving, then dropping to 0.06–0.6 over ~10 readings after stopping) stands as that test's record.
+
 ## Not Yet Explored / Possible Extensions
 
 - Real velocity/acceleration tuning based on the robot's actual physical performance rather than conservative estimates.
